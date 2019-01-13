@@ -304,14 +304,14 @@ public class ClientGui extends Thread {
               }
               if (ListUser.size() > 1) {
                 if (jfr.getState() == Frame.ICONIFIED) {
-                  JOptionPane.showMessageDialog(jfr, "<html><b>New user: </b>" + ListUser.get(ListUser.size() - 1),
+                  JOptionPane.showMessageDialog(null, "<html><b>New user: </b>" + ListUser.get(ListUser.size() - 1),
                           "Welcome to the new user", JOptionPane.PLAIN_MESSAGE);
                 }
               }
             }else{
               appendToPane(jtextFilDiscu, message);
               if (jfr.getState() == Frame.ICONIFIED) {
-                JOptionPane.showMessageDialog(jfr, "<html><b>New message: </b>" + message,
+                JOptionPane.showMessageDialog(null, "<html><b>New message: </b>" + message,
                         "New Message", JOptionPane.PLAIN_MESSAGE);
 
               }
