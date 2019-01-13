@@ -21,6 +21,7 @@ import java.util.Arrays;
 
 public class ClientGui extends Thread {
 
+  final JFrame jfr = new JFrame("Chat");
   final JTextPane jtextFilDiscu = new JTextPane();
   final JTextPane jtextListUsers = new JTextPane();
   final JTextField jtextInputChat = new JTextField();
@@ -34,6 +35,7 @@ public class ClientGui extends Thread {
   Socket server;
 
   public ClientGui() {
+
     this.serverName = "localhost";
     this.PORT = 12345;
     this.name = "nickname";
@@ -41,7 +43,7 @@ public class ClientGui extends Thread {
     String fontfamily = "Arial, sans-serif";
     Font font = new Font(fontfamily, Font.PLAIN, 15);
 
-    final JFrame jfr = new JFrame("Chat");
+    //final JFrame jfr = new JFrame("Chat");
     jfr.getContentPane().setLayout(null);
     jfr.setSize(700, 500);
     jfr.setResizable(false);
@@ -300,8 +302,20 @@ public class ClientGui extends Thread {
               for (String user : ListUser) {
                 appendToPane(jtextListUsers, "@" + user);
               }
+              if (ListUser.size() > 1) {
+                if (jfr.getState() == Frame.ICONIFIED) {
+                  JOptionPane.showMessageDialog(jfr, "<html><b>New user: </b>" + ListUser.get(ListUser.size() - 1),
+                          "Welcome to the new user", JOptionPane.PLAIN_MESSAGE);
+                }
+              }
             }else{
               appendToPane(jtextFilDiscu, message);
+              if (jfr.getState() == Frame.ICONIFIED) {
+                JOptionPane.showMessageDialog(jfr, "<html><b>New message: </b>" + message,
+                        "New Message", JOptionPane.PLAIN_MESSAGE);
+
+              }
+
             }
           }
         }
